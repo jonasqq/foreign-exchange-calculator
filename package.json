@@ -1,0 +1,57 @@
+{
+  "name": "exchange",
+  "version": "1.0.0",
+  "description": "foreign exchange calculator",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "npm test",
+    "start:dev": "webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonasqq/foreign-exchange-calculator.git"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "Nathanael Jonas",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/jonasqq/foreign-exchange-calculator/issues"
+  },
+  "homepage": "https://github.com/jonasqq/foreign-exchange-calculator#readme",
+  "dependencies": {
+    "normalize.css": "^8.0.1",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "react-redux": "^7.1.1",
+    "react-select": "^3.0.8",
+    "redux": "^4.0.4",
+    "redux-observable": "^1.2.0",
+    "rxjs": "^6.5.3",
+    "styled-components": "^4.4.1"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.11",
+    "@types/react-dom": "^16.9.3",
+    "@types/react-redux": "^7.1.5",
+    "@types/react-select": "^3.0.8",
+    "@types/styled-components": "^4.1.20",
+    "@typescript-eslint/eslint-plugin": "^2.6.0",
+    "@typescript-eslint/parser": "^2.6.0",
+    "css-loader": "^3.2.0",
+    "eslint": "^6.6.0",
+    "eslint-config-prettier": "^6.5.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react": "^7.16.0",
+    "html-webpack-plugin": "^3.2.0",
+    "prettier": "^1.18.2",
+    "source-map-loader": "^0.2.4",
+    "style-loader": "^1.0.0",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.6.4",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0"
+  }
+}
