@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import Select from 'react-select';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 import Page, { PageHeader, PageBody } from './components/Page';
 import { Input, InputGroup } from './components/Field';
@@ -71,22 +72,26 @@ function AppContainer({ rates, fetchRate, addRateCard, deleteRateCard }: Props):
           />
         </InputGroup>
         <CardContainer style={{ marginBottom: 10 }}>
-          {rates.map((rate: Rate, idx) => {
-            return (
-              rate.currency !== baseCurrency.value && (
-                <CurrencyCard
-                  key={rate.currency}
-                  baseCurrency={form.baseCurrency.value}
-                  currency={rate.currency}
-                  rate={rate.rate}
-                  value={rate.rate * form.inputValue}
-                  onDelete={(): void => {
-                    deleteRateCard(idx);
-                  }}
-                />
-              )
-            );
-          })}
+          <TransitionGroup enter>
+            {rates.map((rate: Rate, idx) => {
+              return (
+                rate.currency !== baseCurrency.value && (
+                  <CSSTransition key={rate.currency} timeout={500} classNames="card">
+                    <CurrencyCard
+                      key={rate.currency}
+                      baseCurrency={form.baseCurrency.value}
+                      currency={rate.currency}
+                      rate={rate.rate}
+                      value={rate.rate * form.inputValue}
+                      onDelete={(): void => {
+                        deleteRateCard(idx);
+                      }}
+                    />
+                  </CSSTransition>
+                )
+              );
+            })}
+          </TransitionGroup>
         </CardContainer>
         {showAddMoreBtn ? (
           <Button onClick={(): void => toggleAddMoreBtn(!showAddMoreBtn)}>(+) Add More Currencies</Button>

@@ -18,6 +18,20 @@ const GlobalStyle = createGlobalStyle`
       background: #eee
     }
   }
+  .card-enter {
+    opacity: 0;
+  }
+  .card-enter-active {
+    opacity: 1;
+    transition: opacity 500ms ease-in;
+  }
+  .card-exit {
+    opacity: 1;
+  }
+  .card-exit-active {
+    opacity: 0;
+    transition: opacity 500ms ease-in;
+  }
 `;
 
 export default GlobalStyle;
