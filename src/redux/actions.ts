@@ -1,13 +1,17 @@
-import { ADD_CURRENCY, DELETE_CURRENCY, FETCH_RATE, ActionTypes } from './types';
+import { RateAction, FetchRateResponse } from './types';
 
-export function addCurrencyRate(currency: string): ActionTypes {
-  return { type: ADD_CURRENCY, currency };
+export function addRateCard(currency: string): RateAction {
+  return { type: 'ADD_RATE_CARD', currency };
 }
 
-export function deleteCurrencyRate(currencyId: number): ActionTypes {
-  return { type: DELETE_CURRENCY, currencyId };
+export function deleteRateCard(cardIndex: number): RateAction {
+  return { type: 'DELETE_RATE_CARD', cardIndex };
 }
 
-export function fetchRate(selectedCurrency: string, value: number): ActionTypes {
-  return { type: FETCH_RATE, selectedCurrency, value };
+export function fetchRate(selectedCurrency: string, value: number): RateAction {
+  return { type: 'FETCH_RATE', selectedCurrency, value };
+}
+
+export function fetchRateDone(data: FetchRateResponse): RateAction {
+  return { type: 'FETCH_RATE_DONE', data };
 }

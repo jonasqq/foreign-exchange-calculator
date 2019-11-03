@@ -5,47 +5,132 @@ import Select from 'react-select';
 import Page, { PageHeader, PageBody } from './components/Page';
 import { Input, InputGroup } from './components/Field';
 import CardContainer, { CurrencyCard } from './components/Card';
+import Button from './components/Button';
 import GlobalStyle from './components/GlobalStyle';
 
-import { currencySelectOptions } from './helpers/currency';
+import { currencySelectOptions, altCurrencySelectOptions, getCurrencyLabel } from './helpers/currency';
 
-import { fetchRate, addCurrencyRate, deleteCurrencyRate } from './redux/actions';
+import { fetchRate, addRateCard, deleteRateCard } from './redux/actions';
+import { Rate, RateAction } from './redux/types';
 
-function AppContainer(): JSX.Element {
+const { useState, useEffect } = React;
+
+interface MapState {
+  rates: Rate[];
+}
+interface MapDispatch {
+  fetchRate: (selectedCurrency: string, value: number) => RateAction;
+  addRateCard: (currency: string) => RateAction;
+  deleteRateCard: (cardIndex: number) => RateAction;
+}
+
+type Props = MapState & MapDispatch;
+
+function AppContainer({ rates, fetchRate, addRateCard, deleteRateCard }: Props): JSX.Element {
+  const activeCurrencies = rates.map(rate => rate.currency);
+  const altCurrencies = altCurrencySelectOptions.filter(option => !activeCurrencies.includes(option.value));
+  const [form, changeForm] = useState({
+    baseCurrency: currencySelectOptions[0],
+    inputValue: 10,
+    selectedNewCurrency: null,
+  });
+  const [showAddMoreBtn, toggleAddMoreBtn] = useState(true);
+  const { baseCurrency, inputValue, selectedNewCurrency } = form;
+  useEffect((): void => {
+    fetchRate(baseCurrency.value, inputValue);
+  }, [baseCurrency, inputValue, rates.length]);
   return (
     <Page>
       <GlobalStyle />
       <PageHeader>Foreign Exchange Rate</PageHeader>
-      <PageBody>
-        <InputGroup style={{ marginBottom: 20, textAlign: 'center' }}>
+      <PageBody style={{ marginBottom: 20 }}>
+        <div style={{ fontStyle: 'italic', marginBottom: 5, fontSize: '0.8em' }}>
+          {getCurrencyLabel(baseCurrency.value)}
+        </div>
+        <InputGroup style={{ marginBottom: 20 }}>
           <Select
             className="react-select"
             styles={{
               control: (style): React.CSSProperties => ({ ...style, height: 40, width: 100 }),
             }}
-            defaultValue={currencySelectOptions[0]}
+            onChange={(selected: { value: string; label: string }): void => {
+              changeForm({ ...form, baseCurrency: selected });
+            }}
+            defaultValue={baseCurrency}
             classNamePrefix="select"
             isSearchable={true}
             name="currency"
             options={currencySelectOptions}
           />
-          <Input type="number" name="currency-value" />
+          <Input
+            style={{ width: 'calc(100% - 100px)', textAlign: 'right' }}
+            type="number"
+            name="currency-value"
+            defaultValue={inputValue}
+            onChange={(e): void => changeForm({ ...form, inputValue: parseInt(e.target.value) })}
+          />
         </InputGroup>
-        <CardContainer>
-          <CurrencyCard inputCurrency="USD" outputCurrency="IDR" rate={14000} value={100000} />
+        <CardContainer style={{ marginBottom: 10 }}>
+          {rates.map((rate: Rate, idx) => {
+            return (
+              rate.currency !== baseCurrency.value && (
+                <CurrencyCard
+                  key={rate.currency}
+                  baseCurrency={form.baseCurrency.value}
+                  currency={rate.currency}
+                  rate={rate.rate}
+                  value={rate.rate * form.inputValue}
+                  onDelete={(): void => {
+                    deleteRateCard(idx);
+                  }}
+                />
+              )
+            );
+          })}
         </CardContainer>
+        {showAddMoreBtn ? (
+          <Button onClick={(): void => toggleAddMoreBtn(!showAddMoreBtn)}>(+) Add More Currencies</Button>
+        ) : (
+          <InputGroup style={{ textAlign: 'center' }}>
+            <Select
+              className="react-select"
+              styles={{
+                control: (style): React.CSSProperties => ({ ...style, height: 40, width: 100 }),
+              }}
+              onChange={(selected: { value: string; label: string }): void => {
+                changeForm({ ...form, selectedNewCurrency: selected });
+              }}
+              value={selectedNewCurrency}
+              classNamePrefix="select"
+              isSearchable={true}
+              name="add-currency-card"
+              options={altCurrencies}
+              placeholder="Select"
+            />
+            <Button
+              onClick={(): void => {
+                if (selectedNewCurrency) {
+                  addRateCard(selectedNewCurrency.value);
+                  changeForm({ ...form, selectedNewCurrency: null });
+                }
+              }}
+            >
+              Submit
+            </Button>
+          </InputGroup>
+        )}
       </PageBody>
     </Page>
   );
 }
 
-const mapStateToProps = (state: { rates: object[] }): object => ({
+const mapStateToProps = (state: { rates: Rate[] }): MapState => ({
   rates: state.rates,
 });
 const mapDispatchToProps = {
   fetchRate,
-  addCurrencyRate,
-  deleteCurrencyRate,
+  addRateCard,
+  deleteRateCard,
 };
 export default connect(
   mapStateToProps,

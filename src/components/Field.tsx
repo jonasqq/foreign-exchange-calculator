@@ -27,6 +27,7 @@ export const InputGroup = styled.div`
     border-bottom-left-radius: ${borderRadius};
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
+    margin-top: 1px;
     & > div:not(.select__menu) {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
@@ -41,5 +42,9 @@ export const InputGroup = styled.div`
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
     }
+  }
+  button {
+    width: auto;
+    margin-top: 2px;
   }
 `;

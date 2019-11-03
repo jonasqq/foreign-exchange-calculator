@@ -1,21 +1,39 @@
-export const ADD_CURRENCY = 'ADD_CURRENCY';
-export const DELETE_CURRENCY = 'DELETE_CURRENCY';
-export const FETCH_RATE = 'GET_RATE';
+export interface Rate {
+  currency: string;
+  rate: number;
+}
 
-interface AddCurrencyAction {
-  type: typeof ADD_CURRENCY;
+export interface AddRateCard {
+  type: 'ADD_RATE_CARD';
   currency: string;
 }
 
-interface DeleteCurrencyAction {
-  type: typeof DELETE_CURRENCY;
-  currencyId: number;
+export interface DeleteRateCard {
+  type: 'DELETE_RATE_CARD';
+  cardIndex: number;
 }
 
-interface RateAction {
-  type: typeof FETCH_RATE;
+export interface FetchRate {
+  type: 'FETCH_RATE';
   selectedCurrency: string;
   value: number;
 }
 
-export type ActionTypes = AddCurrencyAction | DeleteCurrencyAction | RateAction;
+export interface FetchRateResponse {
+  rates: {
+    [index: string]: number;
+  };
+  base: string;
+  date: string;
+  error?: string;
+}
+export interface FetchRateDone {
+  type: 'FETCH_RATE_DONE';
+  data: FetchRateResponse;
+}
+
+export type RateAction = AddRateCard | DeleteRateCard | FetchRate | FetchRateDone;
+
+export interface RootState {
+  rates: Rate[];
+}
