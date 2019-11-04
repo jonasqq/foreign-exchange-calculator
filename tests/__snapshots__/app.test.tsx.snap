@@ -1,0 +1,336 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render correctly 1`] = `
+<div
+  className="sc-bdVaJa gCggdw"
+>
+  <div
+    className="sc-bwzfXH bbbxqf"
+  >
+    Foreign Exchange Rate
+  </div>
+  <div
+    className="sc-htpNat dePyzG"
+    style={
+      Object {
+        "marginBottom": 20,
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "fontSize": "0.8em",
+          "fontStyle": "italic",
+          "marginBottom": 5,
+        }
+      }
+    >
+      USD - United States Dollar
+    </div>
+    <div
+      className="sc-ifAKCX laBfsI"
+      style={
+        Object {
+          "marginBottom": 20,
+        }
+      }
+    >
+      <div
+        className="react-select css-2b097c-container"
+        onKeyDown={[Function]}
+      >
+        <div
+          className="select__control css-f81n3h-control"
+          onMouseDown={[Function]}
+          onTouchEnd={[Function]}
+        >
+          <div
+            className="select__value-container select__value-container--has-value css-1hwfws3"
+          >
+            <div
+              className="select__single-value css-1uccc91-singleValue"
+            >
+              USD
+            </div>
+            <div
+              className="css-b8ldur-Input"
+            >
+              <div
+                className="select__input"
+                style={
+                  Object {
+                    "display": "inline-block",
+                  }
+                }
+              >
+                <input
+                  aria-autocomplete="list"
+                  autoCapitalize="none"
+                  autoComplete="off"
+                  autoCorrect="off"
+                  disabled={false}
+                  id="react-select-2-input"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  spellCheck="false"
+                  style={
+                    Object {
+                      "background": 0,
+                      "border": 0,
+                      "boxSizing": "content-box",
+                      "color": "inherit",
+                      "fontSize": "inherit",
+                      "label": "input",
+                      "opacity": 1,
+                      "outline": 0,
+                      "padding": 0,
+                      "width": "1px",
+                    }
+                  }
+                  tabIndex="0"
+                  type="text"
+                  value=""
+                />
+                <div
+                  style={
+                    Object {
+                      "height": 0,
+                      "left": 0,
+                      "overflow": "scroll",
+                      "position": "absolute",
+                      "top": 0,
+                      "visibility": "hidden",
+                      "whiteSpace": "pre",
+                    }
+                  }
+                >
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="select__indicators css-1hb7zxy-IndicatorsContainer"
+          >
+            <span
+              className="select__indicator-separator css-1okebmr-indicatorSeparator"
+            />
+            <div
+              aria-hidden="true"
+              className="select__indicator select__dropdown-indicator css-tlfecz-indicatorContainer"
+              onMouseDown={[Function]}
+              onTouchEnd={[Function]}
+            >
+              <svg
+                aria-hidden="true"
+                className="css-6q0nyr-Svg"
+                focusable="false"
+                height={20}
+                viewBox="0 0 20 20"
+                width={20}
+              >
+                <path
+                  d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <input
+          name="currency"
+          type="hidden"
+          value="USD"
+        />
+      </div>
+      <input
+        className="sc-bxivhb faemZt"
+        defaultValue={10}
+        name="currency-value"
+        onChange={[Function]}
+        style={
+          Object {
+            "textAlign": "right",
+            "width": "calc(100% - 100px)",
+          }
+        }
+        type="number"
+      />
+    </div>
+    <div
+      className="sc-gZMcBi jWFTjf"
+      style={
+        Object {
+          "marginBottom": 10,
+        }
+      }
+    >
+      <div>
+        <div
+          className="sc-bZQynM kgkIPs"
+        >
+          <div
+            className="sc-gzVnrw hpFAkG"
+          >
+            <span
+              className="currency"
+            >
+              IDR
+            </span>
+            <span
+              className="value"
+            >
+              0
+            </span>
+          </div>
+          <div
+            className="sc-htoDjs cnqSxK"
+          >
+            IDR - Indonesian Rupiah
+          </div>
+          <div
+            className="sc-dnqmqq fOeLjC"
+          >
+            1 
+            USD
+             = 
+            IDR
+             
+            0
+          </div>
+          <button
+            className="sc-EHOje sc-iwsKbI XxEAE"
+            onClick={[Function]}
+          >
+            (-)
+          </button>
+        </div>
+        <div
+          className="sc-bZQynM kgkIPs"
+        >
+          <div
+            className="sc-gzVnrw hpFAkG"
+          >
+            <span
+              className="currency"
+            >
+              EUR
+            </span>
+            <span
+              className="value"
+            >
+              0
+            </span>
+          </div>
+          <div
+            className="sc-htoDjs cnqSxK"
+          >
+            EUR - Euro
+          </div>
+          <div
+            className="sc-dnqmqq fOeLjC"
+          >
+            1 
+            USD
+             = 
+            EUR
+             
+            0
+          </div>
+          <button
+            className="sc-EHOje sc-iwsKbI XxEAE"
+            onClick={[Function]}
+          >
+            (-)
+          </button>
+        </div>
+        <div
+          className="sc-bZQynM kgkIPs"
+        >
+          <div
+            className="sc-gzVnrw hpFAkG"
+          >
+            <span
+              className="currency"
+            >
+              GBP
+            </span>
+            <span
+              className="value"
+            >
+              0
+            </span>
+          </div>
+          <div
+            className="sc-htoDjs cnqSxK"
+          >
+            GBP - British Pound
+          </div>
+          <div
+            className="sc-dnqmqq fOeLjC"
+          >
+            1 
+            USD
+             = 
+            GBP
+             
+            0
+          </div>
+          <button
+            className="sc-EHOje sc-iwsKbI XxEAE"
+            onClick={[Function]}
+          >
+            (-)
+          </button>
+        </div>
+        <div
+          className="sc-bZQynM kgkIPs"
+        >
+          <div
+            className="sc-gzVnrw hpFAkG"
+          >
+            <span
+              className="currency"
+            >
+              SGD
+            </span>
+            <span
+              className="value"
+            >
+              0
+            </span>
+          </div>
+          <div
+            className="sc-htoDjs cnqSxK"
+          >
+            SGD - Singapore Dollar
+          </div>
+          <div
+            className="sc-dnqmqq fOeLjC"
+          >
+            1 
+            USD
+             = 
+            SGD
+             
+            0
+          </div>
+          <button
+            className="sc-EHOje sc-iwsKbI XxEAE"
+            onClick={[Function]}
+          >
+            (-)
+          </button>
+        </div>
+      </div>
+    </div>
+    <button
+      className="sc-EHOje gejnCW"
+      onClick={[Function]}
+    >
+      (+) Add More Currencies
+    </button>
+  </div>
+</div>
+`;

@@ -4,6 +4,7 @@ ENV NODE_VERSION 8.16.2
 
 RUN addgroup -g 1000 node \
     && adduser -u 1000 -G node -s /bin/sh -D node \
+    && apk update \
     && apk add --no-cache \
         libstdc++ \
     && apk add --no-cache --virtual .build-deps \
@@ -78,8 +79,6 @@ WORKDIR /opt/exchange
 COPY package*.json ./
 
 RUN npm ci --only=production
-# If you are building your code for production
-# RUN npm ci --only=production
 
 # Bundle app source
 COPY . .
