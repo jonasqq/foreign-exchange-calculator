@@ -5,8 +5,14 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "npm test",
+    "start": "node server.js",
     "start:dev": "webpack-dev-server",
     "build": "rm -rf ./dist && webpack --mode=production"
+  },
+  "heroku-run-build-script": false,
+  "engines": {
+    "node": "8",
+    "npm": "6"
   },
   "repository": {
     "type": "git",
